@@ -1,0 +1,18 @@
+{
+  "name": "hj-metal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@treder.me:4560/home/git/repo/hj-metal"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "metalsmith": "^2.3.0"
+  }
+}
