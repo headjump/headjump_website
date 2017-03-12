@@ -4,9 +4,7 @@ const layouts         = require('metalsmith-layouts');
 const markdown        = require('metalsmith-markdown');
 const permalinks      = require('metalsmith-permalinks');
 const sass            = require('metalsmith-sass');
-const inPlace           = require('metalsmith-in-place');
-//var Consolidate       = require('metalsmith-engine-consolidate');
-
+const inPlace         = require('metalsmith-in-place');
 
 Metalsmith(__dirname)
   .metadata({
