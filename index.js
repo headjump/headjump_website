@@ -3,6 +3,7 @@ const collections     = require('metalsmith-collections');
 const layouts         = require('metalsmith-layouts');
 const markdown        = require('metalsmith-markdown');
 const permalinks      = require('metalsmith-permalinks');
+const sass            = require('metalsmith-sass');
 
 
 Metalsmith(__dirname)
@@ -21,9 +22,10 @@ Metalsmith(__dirname)
   .use(permalinks({
     relative: false
   }))
+  .use(sass())
   .use(layouts({
     engine: 'handlebars'
   }))
   .build(function (err) {
-    console.log(err);       
+    console.log(err);
   });
