@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>{{ title }}</title>
-  <meta name="description" content="{{ description }}">
+  <title><%= title %></title>
+  <meta name="description" content="<%= description %>">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 <header>
   <p>
-    <a href="/">Home</a>
+    <a href="/">Home</a> <%= hello(3) %>
   </p>
 </header>
-<h1>{{ title }}</h1>
-<p>{{ description }}</p>
+<h1><%= title %></h1>
+<p><%= description %></p>
 
-{{{ contents }}}
+<%- contents %>
 
 <footer>
   <p>Hello</p>
