@@ -5,6 +5,8 @@
   <title><%= title %></title>
   <meta name="description" content="<%= description %>">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <%- include(atRoot("partial/_include_font.html"), {path: "/css/font/sourcesanspro-regular.woff.css"}) %>
+  <%- include(atRoot("partial/_include_font.html"), {path: "/css/font/sourcesanspro-light.woff.css"}) %>
 </head>
 <body>
 <header>
@@ -18,7 +20,9 @@
 <%- contents %>
 
 <footer>
-  <p>Hello</p>
+  <ul>
+    <li><a href="//dennistreder.de/imprint">Imprint</a></li>
+  </ul>
 </footer>
 
 </body>

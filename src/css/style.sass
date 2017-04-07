@@ -1,7 +1,15 @@
 @charset "utf-8"
 
 @import "normalize"
+@import "config"
 
 body
   padding: 0
-  color: red
+  color: $cTextDark
+  background: $cBgDark
+  font-family: $font-family-sans-serif
+
+h1, h2, h3
+  font-family: $font-family-headline
+
+@import "header.comp"

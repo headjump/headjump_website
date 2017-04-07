@@ -5,12 +5,15 @@ const markdown        = require('metalsmith-markdown');
 const permalinks      = require('metalsmith-permalinks');
 const sass            = require('metalsmith-sass');
 const inPlace         = require('metalsmith-in-place');
+const path            = require('path');
 
 Metalsmith(__dirname)
   .metadata({
+    atRoot: function(target) {
+      return path.join(__dirname, target);
+    },
     title: "hello",
     sitename: "My Static Site & Blog",
-    siteurl: "http://example.com/",
     description: "It's about saying »Hello« to the world.",
     hello: function(val) { return "Hello " + val; }
   })
@@ -28,8 +31,7 @@ Metalsmith(__dirname)
   .use(markdown())
   .use(sass())
   .use(layouts({
-    engine: 'ejs',
-    default: 'layout.html'
+    engine: 'ejs'
   }))
   .use(permalinks({
     relative: false
