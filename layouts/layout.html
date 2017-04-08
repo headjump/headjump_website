@@ -5,8 +5,7 @@
   <title><%= title %></title>
   <meta name="description" content="<%= description %>">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <%- include(atRoot("partial/_include_font.html"), {path: "/css/font/sourcesanspro-regular.woff.css"}) %>
-  <%- include(atRoot("partial/_include_font.html"), {path: "/css/font/sourcesanspro-light.woff.css"}) %>
+  <%- include(atRoot("partial/_include_font.html"), {paths: ["/css/font/sourcesanspro-regular.woff.css","/css/font/sourcesanspro-light.woff.css"]}) %>
 </head>
 <body>
 <header>

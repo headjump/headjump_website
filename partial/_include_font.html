@@ -2,44 +2,53 @@
 <script>
   (function(){
     var
-      path = "<%= path %>",
-      storage_key = path.replace(/[\/\\.:-]]*/g, "_");
+      paths = ["<%- paths.join('","') %>"];
 
-    var addFont = function addFont() {
-      var style = document.createElement('style');
-      style.rel = 'stylesheet';
-      document.head.appendChild(style);
-      style.textContent = localStorage[storage_key];
-    };
+    while(paths.length > 0) {
+      (function() {
+        var
+          path = paths.pop(),
+          storage_key = "font_" + path.replace(/[\/\\.:-]]*/g, "_");
+        
+        console.log(path, storage_key);
 
-    try {
-      if (localStorage[storage_key]) {
-        // The font is in localStorage, we can load it directly
-        addFont();
-      } else {
-        // We have to first load the font file asynchronously
-        var request = new XMLHttpRequest();
-        request.open('GET', path, true);
+        var addFont = function addFont() {
+          var style = document.createElement('style');
+          style.rel = 'stylesheet';
+          document.head.appendChild(style);
+          style.textContent = localStorage[storage_key];
+        };
 
-        request.onload = function() {
-          if (request.status >= 200 && request.status < 400) {
-            // We save the file in localStorage
-            localStorage[storage_key] = request.responseText;
-
-            // ... and load the font
+        try {
+          if (localStorage[storage_key]) {
+            // The font is in localStorage, we can load it directly
             addFont();
-          }
-        }
+          } else {
+            // We have to first load the font file asynchronously
+            var request = new XMLHttpRequest();
+            request.open('GET', path, true);
 
-        request.send();
-      }
-    } catch(ex) {
-      // synchroneous include
-      var style = document.createElement('link');
-      style.rel = 'stylesheet';
-      style.type = 'text/css';
-      style.href = path;
-      document.head.appendChild(style);
+            request.onload = function () {
+              if (request.status >= 200 && request.status < 400) {
+                // We save the file in localStorage
+                localStorage[storage_key] = request.responseText;
+
+                // ... and load the font
+                addFont();
+              }
+            };
+
+            request.send();
+          }
+        } catch (ex) {
+          // synchroneous include
+          var style = document.createElement('link');
+          style.rel = 'stylesheet';
+          style.type = 'text/css';
+          style.href = path;
+          document.head.appendChild(style);
+        }
+      })();
     }
   }());
 </script>
