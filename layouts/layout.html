@@ -8,10 +8,9 @@
   <%- include(atRoot("partial/_include_font.html"), {paths: ["/css/font/sourcesanspro-regular.woff.css","/css/font/sourcesanspro-light.woff.css"]}) %>
 </head>
 <body>
-<header>
-  <p>
-    <a href="/">Home</a> <%= hello(3) %>
-  </p>
+<header class="header <%= header_class %>">
+  <div class="header__logo"></div>
+  <a class="header__title" href="/">Home</a>
 </header>
 <h1><%= title %></h1>
 <p><%= description %></p>

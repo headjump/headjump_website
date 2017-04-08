@@ -13,6 +13,7 @@ Metalsmith(__dirname)
       return path.join(__dirname, target);
     },
     title: "hello",
+    header_class: "",
     sitename: "My Static Site & Blog",
     description: "It's about saying »Hello« to the world.",
     hello: function(val) { return "Hello " + val; }
