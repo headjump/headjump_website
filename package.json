@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.5.6",
+    "http-server": "^0.10.0",
     "jstransformer": "^1.0.0",
     "jstransformer-ejs": "0.0.3",
     "metalsmith": "^2.3.0",
