@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node index.js",
+    "build-with-drafts": "node index.js --preview-drafts",
     "serve": "http-server build"
   },
   "repository": {
@@ -15,10 +16,12 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.5.6",
+    "http-server": "^0.10.0",
     "jstransformer": "^1.0.0",
     "jstransformer-ejs": "0.0.3",
     "metalsmith": "^2.3.0",
     "metalsmith-collections": "^0.9.0",
+    "metalsmith-drafts": "^0.0.1",
     "metalsmith-in-place": "^2.0.1",
     "metalsmith-layouts": "^1.8.0",
     "metalsmith-markdown": "^0.2.1",
