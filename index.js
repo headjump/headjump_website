@@ -1,13 +1,13 @@
-const Metalsmith = require('metalsmith');
-const collections = require('metalsmith-collections');
-const layouts = require('metalsmith-layouts');
-const markdown = require('metalsmith-markdown');
-const permalinks = require('metalsmith-permalinks');
-const sass = require('metalsmith-sass');
-const noop = require('./noop');
-const drafts = require('metalsmith-drafts');
-const inPlace = require('metalsmith-in-place');
-const path = require('path');
+const Metalsmith      = require('metalsmith');
+const collections     = require('metalsmith-collections');
+const layouts         = require('metalsmith-layouts');
+const markdown        = require('metalsmith-markdown');
+const permalinks      = require('metalsmith-permalinks');
+const sass            = require('metalsmith-sass');
+const noop            = require('./noop');
+const drafts          = require('metalsmith-drafts');
+const inPlace         = require('metalsmith-in-place');
+const path            = require('path');
 
 const
   preview_drafts = (process.argv.indexOf("--preview-drafts") !== -1);

@@ -7,6 +7,7 @@
     "build": "node index.js",
     "build-with-drafts": "node index.js --preview-drafts",
     "serve": "http-server build",
+    "build-and-serve": "yarn build && yarn serve",
     "upgrade-deps": "node node_modules/yarn-upgrade-all/index.js"
   },
   "repository": {
