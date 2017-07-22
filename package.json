@@ -8,7 +8,7 @@
     "build-with-drafts": "node index.js --preview-drafts",
     "serve": "http-server build",
     "build-and-serve": "yarn build && yarn serve",
-    "publish": "yarn build && node deploy_to_gh-pages.js",
+    "publish_to_gh": "yarn build && node deploy_to_gh-pages.js",
     "upgrade-deps": "node node_modules/yarn-upgrade-all/index.js"
   },
   "repository": {
