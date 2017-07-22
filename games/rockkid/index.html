@@ -1,4 +1,4 @@
-<html manifest="/rocket.manifest">
+<html manifest="/games/rockkid.manifest">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,10 +11,14 @@
   <meta name="description" content="A game about a Rocket!">
 
   <style TYPE="text/css">
-    canvas#canvas { width: 100%; max-width: 512px; height: auto; }
+    canvas#canvas { width: 512px; height: 512px; }
+    @media screen and (max-width: 512px) {
+      canvas#canvas { width: 100%; height: auto; }
+    }
+
 
     .pico8_el {
-      width:82px;
+      width:72px;
       display:inline-block;
       margin: 1px;
       padding: 4px;
@@ -90,7 +94,7 @@
     var Module = {};
     Module.canvas = canvas;
   </script>
-  <script async type="text/javascript" src="/games/rocket.js"></script>
+  <script async type="text/javascript" src="/games/rockkid.js"></script>
 
   <script>
     // key blocker. prevent cursor keys from scrolling page while playing cart.
@@ -168,7 +172,7 @@
     }
   }
   @media screen and (max-height: 640px) and (min-width: 500px) {
-    canvas#canvas { max-width: 420px; }
+    canvas#canvas { max-width: 420px; height: auto; }
     .btn {
       height: 80px;
       line-height: 80px;
