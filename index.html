@@ -1,1 +1,90 @@
-My Page
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Testtitle hello :)</title>
+  <meta name="description" content="It&#39;s about saying »Hello« to the world.">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <!--[if gte IE 9]><!-->
+<script>
+  (function(){
+    var
+      paths = ["/css/font/sourcesanspro-regular.woff.css","/css/font/sourcesanspro-light.woff.css"];
+
+    while(paths.length > 0) {
+      (function() {
+        var
+          path = paths.pop(),
+          storage_key = "font_" + path.replace(/[\/\\.:-]]*/g, "_");
+
+        console.log(path, storage_key);
+
+        var addFont = function addFont() {
+          var style = document.createElement('style');
+          style.rel = 'stylesheet';
+          document.head.appendChild(style);
+          style.textContent = localStorage[storage_key];
+        };
+
+        try {
+          if (localStorage[storage_key]) {
+            // The font is in localStorage, we can load it directly
+            addFont();
+          } else {
+            // We have to first load the font file asynchronously
+            var request = new XMLHttpRequest();
+            request.open('GET', path, true);
+
+            request.onload = function () {
+              if (request.status >= 200 && request.status < 400) {
+                // We save the file in localStorage
+                localStorage[storage_key] = request.responseText;
+
+                // ... and load the font
+                addFont();
+              }
+            };
+
+            request.send();
+          }
+        } catch (ex) {
+          // synchroneous include
+          var style = document.createElement('link');
+          style.rel = 'stylesheet';
+          style.type = 'text/css';
+          style.href = path;
+          document.head.appendChild(style);
+        }
+      })();
+    }
+  }());
+</script>
+<!--<![endif]-->
+</head>
+<body>
+<header class="header header--large">
+  <div class="header__logo"></div>
+  <a class="header__title" href="/">Home</a>
+</header>
+<h1>Testtitle hello :)</h1>
+<p>It&#39;s about saying »Hello« to the world.</p>
+
+
+index! hello world
+
+<ul>
+  <li>
+    <a href="/rocket">RockKid!</a>
+  </li>
+</ul>
+
+TESTPARTIALA value!
+
+<footer>
+  <ul>
+    <li><a href="//dennistreder.de/imprint">Imprint</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>

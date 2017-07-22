@@ -1,0 +1,221 @@
+<html manifest="/rocket.manifest">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="RockKid!">
+  <title>RockKid!</title>
+
+  <meta name="description" content="A game about a Rocket!">
+
+  <style TYPE="text/css">
+    canvas#canvas { width: 100%; max-width: 512px; height: auto; }
+
+    .pico8_el {
+      width:82px;
+      display:inline-block;
+      margin: 1px;
+      padding: 4px;
+      text-align: center;
+      color:#fff;
+      background-color:#777;
+      font-family: Verdana, Arial, sans-serif;
+      font-size: 9pt;
+      cursor: pointer;
+    }
+    .pico8_el a{
+      text-decoration: none;
+      color:#fff;
+    }
+
+    .pico8_el:hover{
+      background-color:#aaa;
+    }
+
+    .pico8_el:link{
+      background-color:#aaa;
+    }
+
+    canvas{
+      image-rendering: optimizeSpeed;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: optimize-contrast;
+      image-rendering: pixelated;
+      -ms-interpolation-mode: nearest-neighbor;
+      border: 0;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+<style>
+  .touch-not-supported .show-if-touch { display: none; }
+  .touch-supported .show-if-not-touch { display: none; }
+</style>
+
+<script type="text/javascript">
+  if(
+    window.location.href.indexOf("?touch") !== -1
+    || navigator.userAgent.match(/Android/i)
+    || navigator.userAgent.match(/webOS/i)
+    || navigator.userAgent.match(/iPhone/i)
+    || navigator.userAgent.match(/iPad/i)
+    || navigator.userAgent.match(/iPod/i)
+    || navigator.userAgent.match(/BlackBerry/i)
+    || navigator.userAgent.match(/Windows Phone/i)
+  ) {
+    document.body.className += " touch-supported";
+    window.TOUCH = true;
+  } else {
+    document.body.className += " touch-not-supported";
+  }
+</script>
+
+
+
+<div class="canvas-wrapper">
+  <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+</div>
+<div>
+  <script type="text/javascript">
+    var canvas = document.getElementById("canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var Module = {};
+    Module.canvas = canvas;
+  </script>
+  <script async type="text/javascript" src="/games/rocket.js"></script>
+
+  <script>
+    // key blocker. prevent cursor keys from scrolling page while playing cart.
+    function onKeyDown_blocker(event) {
+      event = event || window.event;
+      var o = document.activeElement;
+      if (!o || o == document.body || o.tagName == "canvas") {
+        if ([32, 37, 38, 39, 40].indexOf(event.keyCode) > -1) {
+          if (event.preventDefault) event.preventDefault();
+        }
+      }
+    }
+    document.addEventListener('keydown', onKeyDown_blocker, false);
+  </script>
+
+  <div style="text-align: center;">
+    <span class="pico8_el" onclick="Module.pico8Reset();">
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAaklEQVR4Ae2dOwoAMQhE15A+rfc/3bZ7AlMnQfywCkKsfcgMM9ZP+QHtIn0vLeBAFduiFdQ/0DmvtR5LXJ6CPSXe2ZXcFNlTxFbemKrbZPs35XogeS9xeQr+anT6LzoOwEDwZJ7jwhXUnwkTTiDQ2Ja34AAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII="
+        alt="Reset" width=12 height=12/>
+      Reset
+    </span>
+    <span class="pico8_el" onclick="Module.pico8TogglePaused();">
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAPUlEQVR4Ae3doQ0AIAxEUWABLPtPh2WCq26DwFSU/JPNT166QSu/Hg86W9dwLte+diP7AwAAAAAAgD+A+jM2ZAgo84I0PgAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII="
+        alt="Pause" width=12 height=12/>
+      Pause
+    </span>
+    <span class="pico8_el show-if-not-touch" onclick="Module.requestFullScreen(true, false);">
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAaklEQVR4Ae2dsQ1AIQhExfze1v2ns3UCrfgFhmgUUAoGgHscp21wX9BqaZoDojbB96OkDJKNcTN2BHTyYNYmoT2BlPL7BKgcPfHjAVXKKadkHOn9K1r16N0czN6a95N8mnA7Aq2fTZ3Af3UKmCSMazL8HwAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII="
+        alt="Fullscreen" width=12 height=12/>
+      Fullscreen
+    </span>
+    <span class="pico8_el" onclick="Module.pico8ToggleSound();">
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAXklEQVR4Ae2doQ4AIQxD4YLH8v9fh+ULhjpxxSwLg2uyapr1JRu1iV5Z+1BGl4+xNpX38SYo2uRvYiT5LwEmt+ocgXVLrhPEgBiw8Q5w7/kueSkK+D2tJO4E/I3GrwkqQCBabEj/4QAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII="
+        alt="Toggle Sound" width=12 height=12/>
+      Sound
+    </span>
+  </div>
+</div>
+
+
+<style>
+  body { padding: 0; margin: 0; outline: none; background: #222; overflow: hidden; }
+  .canvas-wrapper { text-align: center; }
+  .canvas-wrapper canvas { margin: 0 auto; }
+  .btns {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  .btn {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+    height: 120px;
+    line-height: 120px;
+    font-size: 40px;
+    background: #29ADFF;
+    border: 2px solid #1D2B53;
+    color: #1D2B53;
+    text-align: center;
+    width: 25%;
+    max-width: 140px;
+  }
+  @media screen and (max-height: 480px) {
+    .btn {
+      height: 80px;
+      line-height: 80px;
+    }
+  }
+  @media screen and (max-height: 640px) and (min-width: 500px) {
+    canvas#canvas { max-width: 420px; }
+    .btn {
+      height: 80px;
+      line-height: 80px;
+    }
+  }
+  .btn--wide { width: 35%; max-width: 180px; }
+  .btn-state { text-align: center; font-family: Consolas, "Lucida Console", sans-serif; color: #dfdfdf;}
+  .relative { position: relative; }
+  .pull-left { float:left; }
+  .pull-right { float:right; }
+  .clear{ clear:both; }
+</style>
+<div id="btns-wrapper" class="show-if-touch btns clear">
+  <div id="btn-state" class="btn-state"></div>
+  <div id="btn-left" class="btn pull-left">←</div>
+  <div id="btn-right" class="btn pull-left">→</div>
+  <div id="btn-fire" class="btn btn--wide pull-right">•</div>
+  <div class="clear"></div>
+</div>
+
+<script type="text/javascript">
+  if(window.TOUCH) {
+    var pico8_buttons = [0, 0, 0, 0, 0, 0, 0, 0]; // max 8 players
+
+    var
+      cnt = 0,
+      btnDown = function(el, key) { el.style.opacity = ".5"; pico8_buttons[0] |= key; },
+      btnUp = function(el, key) { el.style.opacity = "1"; pico8_buttons[0] &= ~key; },
+      debugOut = function(){ document.getElementById("btn-state").innerHTML = "" + pico8_buttons[0]; },
+      touchStart = function(el, key) { btnDown(el, key); debugOut(); },
+      touchEnd = function(el, key) { btnUp(el, key); debugOut(); },
+      touchMove = function(el, key) { debugOut(); },
+      touchCancel = function(el, key) { debugOut(); },
+      addButton = function(el, key) {
+        el.addEventListener("touchstart", function(evt){ evt.preventDefault(); evt.stopImmediatePropagation(); touchStart(el, key); }, false);
+        el.addEventListener("touchend", function(evt){ evt.preventDefault(); evt.stopImmediatePropagation(); touchEnd(el, key); }, false);
+        el.addEventListener("touchcancel", function(evt){ evt.preventDefault(); evt.stopImmediatePropagation(); touchCancel(el, key); }, false);
+        el.addEventListener("touchmove", function(evt){ evt.preventDefault(); evt.stopImmediatePropagation(); touchMove(el, key); }, false);
+      };
+
+    addButton(document.getElementById("btn-left"), 1);
+    addButton(document.getElementById("btn-right"), 2);
+    addButton(document.getElementById("btn-fire"), 16);
+    document.getElementById("btns-wrapper").addEventListener("touchstart", function(evt){ evt.preventDefault(); }, false);
+  }
+</script>
+
+</body></html>
+
+
