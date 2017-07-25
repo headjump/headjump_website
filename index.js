@@ -1,12 +1,11 @@
 const Metalsmith      = require('metalsmith');
-const collections     = require('metalsmith-collections');
 const layouts         = require('metalsmith-layouts');
 const markdown        = require('metalsmith-markdown');
 const permalinks      = require('metalsmith-permalinks');
 const sass            = require('metalsmith-sass');
-const noop            = require('./noop');
+const noop            = require('./lib/noop');
 const drafts          = require('metalsmith-drafts');
-const inPlace         = require('metalsmith-in-place');
+const inPlace         = require('./lib/inPlace');
 const path            = require('path');
 
 const
@@ -24,22 +23,15 @@ Metalsmith(__dirname)
     atRoot: function (target) {
       return path.join(__dirname, target);
     },
-    title: "hello",
-    header_class: "",
-    sitename: "My Static Site & Blog",
-    description: "It's about saying »Hello« to the world.",
-    hello: function (val) {
-      return "Hello " + val;
-    }
+    title: "",
+    page_description: "Indiegames and Game development by Dennis Treder. HTML games, Javascript, Gamedesign, Illustrations and Pixelart."
   })
   .source('./src')
   .destination('./build')
   .clean(true)
   .use((preview_drafts ? noop : drafts)())
-  .use(collections({
-    posts: 'posts/*.md'
-  }))
   .use(inPlace({
+    pattern: ["*.html*", "*.ejs*", "*.md*"],
     engineOptions: {
       "cache": false
     }

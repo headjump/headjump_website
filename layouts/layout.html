@@ -2,15 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title><%= title %></title>
-  <meta name="description" content="<%= description %>">
+  <title>Headjump<%= title !== "" ? (" - " + title) : ""%></title>
+  <meta name="description" content="<%= page_description %>">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <%- include(atRoot("partial/_include_font.html"), {paths: ["/css/font/sourcesanspro-regular.woff.css","/css/font/sourcesanspro-light.woff.css"]}) %>
+  <%- include(atRoot("partial/_include_font.html"), {paths: ["/css/fonts/sourcesanspro-regular.woff.css","/css/fonts/sourcesanspro-light.woff.css"]}) %>
 </head>
 <body>
-<header class="header <%= header_class %>">
-  <div class="header__logo"></div>
-  <a class="header__title" href="/">Home</a>
+<header class="header">
+  <div class="header__logo"><img src="/img/logo.png" aria-hidden="true"></div>
+  <div class="header__title"><img src="/img/title.png" aria-hidden="true"></div>
+  <h1>
+    Headjump - <%= title !== "" ? title : "Games and Indiegames and Game development by Dennis Treder" %>
+  </h1>
+  <div class="header__subtitle">
+    <h2>Half-baked games by <span class="dontbreak">Dennis Treder</span></h2>
+  </div>
 </header>
 <h1><%= title %></h1>
 

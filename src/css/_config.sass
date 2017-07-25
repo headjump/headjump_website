@@ -1,5 +1,17 @@
-$cBgDark: #888
-$cTextDark: #ddd
-
 $font-family-sans-serif: "source_sans_proregular", "Helvetica Neue", Helvetica, Arial, sans-serif
 $font-family-headline: 'source_sans_prolight', "source_sans_proregular", "Helvetica Neue", Helvetica, Arial, sans-serif
+
+=clear-after
+  &:after
+    content: ""
+    display: block
+    clear: both
+    visibility: hidden
+
+=small
+  @media screen and (max-width: 799px)
+    @content
+
+=large
+  @media screen and (min-width: 800px)
+    @content
