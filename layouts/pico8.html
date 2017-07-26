@@ -139,6 +139,29 @@
   </div>
 </div>
 
+<style>
+  .tracking {
+    font-family: Arial, sans-serif;
+    font-size: .75em;
+    color: #626B74;
+    text-align: center;
+    max-width: 80%;
+    margin: .5em auto
+  }
+  .tracking a { color: #626B74; text-decoration: underline; }
+  .tracking--whenNotTracked { display: none; }
+  .tracking--disabled .tracking--whenTracked { display: none; }
+  .tracking--disabled .tracking--whenNotTracked { display: inline; }
+</style>
+<div class="tracking">
+  <span class="tracking--whenTracked">
+    This site uses Google Analytics <a href="/privacy">(Privacy Policy)</a>.
+    You can <a href="javascript:gaOptout()">deactivate tracking.</a>
+  </span>
+  <span class="tracking--whenNotTracked">
+    You are not tracked :)
+  </span>
+</div>
 
 <style>
   body { padding: 0; margin: 0; outline: none; background: #222; overflow: hidden; }
@@ -168,8 +191,8 @@
   }
   @media screen and (max-height: 480px) {
     .btn {
-      height: 80px;
-      line-height: 80px;
+      height: 50px;
+      line-height: 50px;
     }
   }
   @media screen and (max-height: 640px) and (min-width: 500px) {
@@ -220,6 +243,8 @@
     document.getElementById("btns-wrapper").addEventListener("touchstart", function(evt){ evt.preventDefault(); }, false);
   }
 </script>
+
+<%- include(atRoot("partial/_tracking_code.html")) %>
 
 </body></html>
 
