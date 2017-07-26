@@ -23,8 +23,9 @@ Metalsmith(__dirname)
     atRoot: function (target) {
       return path.join(__dirname, target);
     },
+    gaId: "UA-3535743-4",
     title: "",
-    page_description: "Indiegames and Game development by Dennis Treder. HTML games, Javascript, Gamedesign, Illustrations and Pixelart."
+    page_description: "Indiegames and Game development by Dennis Treder. HTML games, Javascript, Gamedesign, Illustration and Pixelart."
   })
   .source('./src')
   .destination('./build')

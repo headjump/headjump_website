@@ -1,0 +1,32 @@
+.footer
+  text-align: center
+  margin-top: 2em
+  &:before
+    content: ""
+    border-top: 1px solid #626B74
+    width: 70%
+    max-width: 180px
+    display: block
+    margin: 0 auto
+  ul
+    padding: 0
+    margin: 2em 0
+    li
+      display: inline
+      list-style-type: none
+      margin: 0 1em
+      &:first-child
+        margin-left: 0
+      &:last-child
+        margin-right: 0
+      +small
+        margin: 0 .3em
+        &:first-child
+          margin-left: 0
+        &:last-child
+          margin-right: 0
+  a
+    font-size: .85em
+    color: #8693A0
+    text-decoration: none
+    padding: .25em

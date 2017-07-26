@@ -40,15 +40,31 @@
     <h2>I am <span class="dontbreak">Dennis Treder</span>, here<br>are my games</h2>
   </div>
 </header>
-<h1><%= title %></h1>
 
-<%- contents %>
+<div class="content">
+  <div class="content__inner">
+
+    <% if(title !== ""){ %>
+      <h1><%= title %></h1>
+    <% } %>
+
+    <%- contents %>
+
+  </div>
+</div>
 
 <footer>
-  <ul>
-    <li><a href="//dennistreder.de/imprint">Imprint</a></li>
-  </ul>
+  <div class="footer">
+    <ul>
+      <li class="dontbreak"><a href="https://twitter.com/headjump"><i class="fa fa-twitter"></i> Twitter</a></li>
+      <li class="dontbreak"><a href="https://github.com/headjump"><i class="fa fa-github"></i> Github</a></li>
+      <li class="dontbreak"><a href="https://headjump.itch.io/"><i class="fa fa-gamepad"></i> itch.io</a></li>
+      <li class="dontbreak"><a href="http://dennistreder.de/imprint">Imprint</a></li>
+    </ul>
+  </div>
 </footer>
+
+<%- include(atRoot("partial/_tracking.html")) %>
 
 </body>
 </html>

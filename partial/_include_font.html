@@ -10,8 +10,6 @@
           path = paths.pop(),
           storage_key = "font_" + path.replace(/[\/\\.:-]]*/g, "_");
 
-        console.log(path, storage_key);
-
         var addFont = function addFont() {
           var style = document.createElement('style');
           style.rel = 'stylesheet';
