@@ -212,8 +212,8 @@
     border: 2px solid #1D2B53;
     color: #1D2B53;
     text-align: center;
-    width: 25%;
-    max-width: 140px;
+    width: 20%;
+    max-width: 120px;
   }
   @media screen and (max-height: 480px) {
     .btn {
@@ -229,6 +229,7 @@
     }
   }
   .btn--wide { width: 35%; max-width: 180px; }
+  .btn--extra-wide { width: 45%; max-width: 220px; }
   .btn-state { text-align: center; font-family: Consolas, "Lucida Console", sans-serif; color: #dfdfdf;}
   .pull-left { float:left; }
   .pull-right { float:right; }
@@ -236,10 +237,16 @@
 </style>
 <div id="btns-wrapper" class="show-if-touch btns clear">
   <div id="btn-state" class="btn-state"></div>
-  <div id="btn-left" class="btn pull-left">←</div>
-  <div id="btn-right" class="btn pull-left">→</div>
-  <div id="btn-fire" class="btn btn--wide pull-right">•</div>
+  <div id="btn-leftRight" class="btn btn--extra-wide pull-left">← →</div>
+  <div id="btn-fire" class="btn pull-right">X</div>
+  <div id="btn-fire2" class="btn pull-right">O</div>
   <div class="clear"></div>
+  <!--
+  <div id="btn-left" class="btn pull-left">←</div>
+  <div id="btn-right" class="btn pull-left">←</div>
+  <div id="btn-fire" class="btn btn-wide pull-right">O</div>
+  <div class="clear"></div>
+  -->
 </div>
 
 <script type="text/javascript">
@@ -256,26 +263,35 @@
   //   -> https://developers.google.com/web/tools/chrome-devtools/device-mode/
   if(window.TOUCH) {
     var
-      pico8_buttons = [0, 0, 0, 0, 0, 0, 0, 0]; // <= the first will be updated by the touch-buttons
-      cnt = 0,
-      btnDown = function(el, key) { el.style.opacity = ".5"; pico8_buttons[0] |= key; },
-      btnUp = function(el, key) { el.style.opacity = "1"; pico8_buttons[0] &= ~key; },
+      pico8_buttons = [0, 0, 0, 0, 0, 0, 0, 0], // <= the first will be updated by the touch-buttons
+      KEY = { L: 1, R: 2, U: 4, D: 8, X: 16, O: 32 },
+      btnDown = function(k1,k2,k3,k4) { k1 && (pico8_buttons[0] |= k1); k2 && (pico8_buttons[0] |= k2); k3 && (pico8_buttons[0] |= k3); k4 && (pico8_buttons[0] |= k4); },
+      btnUp =   function(k1,k2,k3,k4) { k1 && (pico8_buttons[0] &= ~k1); k2 && (pico8_buttons[0] &= ~k2); k3 && (pico8_buttons[0] &= ~k3); k4 && (pico8_buttons[0] &= ~k4); },
       debugOut = function(){ document.getElementById("btn-state").innerHTML = "" + pico8_buttons[0]; },
-      touchStart = function(el, key) { btnDown(el, key); debugOut(); },
-      touchEnd = function(el, key) { btnUp(el, key); debugOut(); },
+      touchStart = function(el, key) { btnDown(key); debugOut(); },
+      touchEnd = function(el, key) { btnUp(key); debugOut(); },
       touchMove = function(el, key) { debugOut(); },
-      touchCancel = function(el, key) { debugOut(); },
-      addButton = function(el, key) {
-        el.addEventListener("touchstart", function(evt){ evt.preventDefault(); evt.stopImmediatePropagation(); touchStart(el, key); }, false);
+      touchCancel = function(el, key) { btnUp(key); debugOut(); },
+      axisStart = function(el, key) { btnDown(key); debugOut(); },
+      axisEnd = function(el, key) { btnUp(KEY.U, KEY.D, KEY.L, KEY.R); debugOut(); },
+      axisMove = function(el, key) { debugOut(); },
+      axisCancel = function(el, key) { btnUp(KEY.U, KEY.D, KEY.L, KEY.R); debugOut(); },
+      killEvt = function(evt) { evt.preventDefault(); evt.stopImmediatePropagation(); },
+      addXAxis = function(el) {
+        el.addEventListener("touchstart", function(evt){ killEvt(evt); touchStart(el, key); }, false);
         el.addEventListener("touchend", function(evt){ evt.preventDefault(); evt.stopImmediatePropagation(); touchEnd(el, key); }, false);
         el.addEventListener("touchcancel", function(evt){ evt.preventDefault(); evt.stopImmediatePropagation(); touchCancel(el, key); }, false);
         el.addEventListener("touchmove", function(evt){ evt.preventDefault(); evt.stopImmediatePropagation(); touchMove(el, key); }, false);
+      },
+      addButton = function(el, key) {
+        el.addEventListener("touchstart", function(evt){ killEvt(evt); btnDown(key); }, false);
+        el.addEventListener("touchend", function(evt){ killEvt(evt); btnUp(key); }, false);
+        el.addEventListener("touchcancel", function(evt){ killEvt(evt); btnUp(key); }, false);
       };
 
-    addButton(document.getElementById("btn-left"), 1);
-    addButton(document.getElementById("btn-right"), 2);
-    addButton(document.getElementById("btn-fire"), 16);
-    document.getElementById("btns-wrapper").addEventListener("touchstart", function(evt){ evt.preventDefault(); }, false);
+    addButton(document.getElementById("btn-fire"), KEY.X);
+    addButton(document.getElementById("btn-fire2"), KEY.O);
+    document.getElementById("btns-wrapper").addEventListener("touchstart", function(evt){ evt.preventDefault(); }, false); // prevents "tilt-zooming" when you accidentally touch between the buttons
   }
 </script>
 
