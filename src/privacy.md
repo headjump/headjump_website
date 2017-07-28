@@ -7,7 +7,7 @@ title: Privacy Policy / Datenschutzbestimmung
 
 <div class="tracking">
 <p>
-  <span class="tracking--whenTracked"><a href="javascript:gaOptout()">Deactivate Google Analytics for this site.</a></span>
+  You can <span class="tracking--whenTracked"><a href="javascript:gaOptout()">deactivate Google Analytics for this site.</a></span>
   <span class="tracking--whenNotTracked">Google Analytics is deactivated. I'm still glad you are here, though :)</span>
 </p>
 </div>

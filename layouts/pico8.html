@@ -12,7 +12,7 @@
   <meta name="description" content="<%= description %>">                 <!-- <= SITE DESCRIPTION as seen by web-search-engines -->
 
   <style TYPE="text/css">
-    body { padding: 0; margin: 0; outline: none; background: #222; overflow: hidden; }
+    body { font-family: Verdana, Arial, sans-serif; padding: 0; margin: 0; outline: none; background: #222; overflow: hidden; }
 
 
     /* ------ POSITION GAME-CANVAS ------ */
@@ -38,7 +38,7 @@
 
     /* ------ pico8 control buttons [reset] [pause] [mute] ------ */
     .pico8_btns { text-align: center; }
-    .pico8_el { width:82px; display:inline-block; margin: 1px; padding: 4px; text-align: center; color:#fff; background-color:#777; font-family: Verdana, Arial, sans-serif; font-size: 9pt; cursor: pointer; }
+    .pico8_el { width:82px; display:inline-block; margin: 1px; padding: 4px; text-align: center; color:#fff; background-color:#777; font-size: 9pt; cursor: pointer; }
     .pico8_el a{ text-decoration: none; color:#fff; }
     .pico8_el:hover{ background-color:#aaa; }
     .pico8_el:link{ background-color:#aaa; }
@@ -153,44 +153,21 @@
 
 <div class="show-if-touch">
   <div class="show-if-not-standalone">
-    Add this app to your homescreen to get better performance!
-    <img src="<%= icon %>" width="30" height="30"> <!-- <= YOUR ICON -->
+    <div class="addToHomescreen__hint">
+      Add this website to your homescreen for better performance and audio!
+    </div>
   </div>
 </div>
 
 <style>
-  .show-if-not-standalone,
-  .show-if-standalone {
-    font-family: Arial, sans-serif;
+  .addToHomescreen__hint {
     font-size: .75em;
-    color: #626B74;
+    margin: .5em 2em;
     text-align: center;
-    max-width: 80%;
-    margin: .5em auto
+    color: white;
+    font-style: italic;
   }
-
-  .tracking {
-    font-family: Arial, sans-serif;
-    font-size: .75em;
-    color: #626B74;
-    text-align: center;
-    max-width: 80%;
-    margin: .5em auto
-  }
-  .tracking a { color: #626B74; text-decoration: underline; }
-  .tracking--whenNotTracked { display: none; }
-  .tracking--disabled .tracking--whenTracked { display: none; }
-  .tracking--disabled .tracking--whenNotTracked { display: inline; }
 </style>
-<div class="tracking">
-  <span class="tracking--whenTracked">
-    This site uses Google Analytics <a href="javascript:window.location.href='/privacy'">(Privacy Policy)</a>.
-    You can <a href="javascript:gaOptout()">deactivate tracking.</a>
-  </span>
-  <span class="tracking--whenNotTracked">
-    You are not tracked :) <a href="javascript:window.location.href='/privacy'">(Privacy Policy)</a>
-  </span>
-</div>
 
 <style>
   .btns {
@@ -201,13 +178,13 @@
   .btn {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
     height: 120px;
     line-height: 120px;
-    font-size: 40px;
+    font-size: 60px;
+    font-weight: bold;
     background: #29ADFF;
     border: 2px solid #1D2B53;
     color: #1D2B53;
@@ -215,19 +192,11 @@
     width: 20%;
     max-width: 120px;
   }
-  @media screen and (max-height: 480px) {
-    .btn {
-      height: 50px;
-      line-height: 50px;
-    }
-  }
-  @media screen and (max-height: 640px) and (min-width: 500px) {
+  @media screen and (max-height: 640px) and (min-width: 500px) {  /* make canvas smaller for small screen-height to make room for touch-buttons */
     canvas#canvas { max-width: 420px; height: auto; }
-    .btn {
-      height: 80px;
-      line-height: 80px;
-    }
-  }
+    .btn { height: 80px; line-height: 80px; } }
+  @media screen and (max-height: 520px) {   /* less height on low screens */
+    .btn { height: 50px; line-height: 50px; } }
   .btn--wide { width: 35%; max-width: 180px; }
   .btn--extra-wide { width: 45%; max-width: 220px; }
   .btn-state { text-align: center; font-family: Consolas, "Lucida Console", sans-serif; color: #dfdfdf;}
@@ -236,23 +205,17 @@
   .clear{ clear:both; }
 </style>
 <div id="btns-wrapper" class="show-if-touch btns clear">
-  <div id="btn-state" class="btn-state"></div>
-  <div id="btn-leftRight" class="btn btn--extra-wide pull-left">← →</div>
-  <div id="btn-fire" class="btn pull-right">X</div>
-  <div id="btn-fire2" class="btn pull-right">O</div>
+  <div id="btn-state" class="btn-state"></div> <!-- Debug info for set state. Remove :) -->
+  <div id="btn-leftRight" class="btn btn--extra-wide pull-left">⮜ ⮞</div>
+  <div id="btn-fire-o" class="btn pull-right">●</div>
+  <div id="btn-fire-x" class="btn pull-right">×</div>
   <div class="clear"></div>
-  <!--
-  <div id="btn-left" class="btn pull-left">←</div>
-  <div id="btn-right" class="btn pull-left">←</div>
-  <div id="btn-fire" class="btn btn-wide pull-right">O</div>
-  <div class="clear"></div>
-  -->
 </div>
 
 <script type="text/javascript">
-  // ------ CREATE TOUCH BUTTONS ------
+  // --------- CREATE TOUCH BUTTONS ---------
   //
-  //      [  <    >  ]   [ O ][ Y ]
+  //      [  <    >  ]       [ X ] [ O ]
   //
   // At the moment only left,right,x,z are supported!
   //
@@ -265,23 +228,35 @@
     var
       pico8_buttons = [0, 0, 0, 0, 0, 0, 0, 0], // <= the first will be updated by the touch-buttons
       KEY = { L: 1, R: 2, U: 4, D: 8, X: 16, O: 32 },
-      btnDown = function(k1,k2,k3,k4) { k1 && (pico8_buttons[0] |= k1); k2 && (pico8_buttons[0] |= k2); k3 && (pico8_buttons[0] |= k3); k4 && (pico8_buttons[0] |= k4); },
-      btnUp =   function(k1,k2,k3,k4) { k1 && (pico8_buttons[0] &= ~k1); k2 && (pico8_buttons[0] &= ~k2); k3 && (pico8_buttons[0] &= ~k3); k4 && (pico8_buttons[0] &= ~k4); },
-      debugOut = function(){ document.getElementById("btn-state").innerHTML = "" + pico8_buttons[0]; },
-      touchStart = function(el, key) { btnDown(key); debugOut(); },
-      touchEnd = function(el, key) { btnUp(key); debugOut(); },
-      touchMove = function(el, key) { debugOut(); },
-      touchCancel = function(el, key) { btnUp(key); debugOut(); },
-      axisStart = function(el, key) { btnDown(key); debugOut(); },
-      axisEnd = function(el, key) { btnUp(KEY.U, KEY.D, KEY.L, KEY.R); debugOut(); },
-      axisMove = function(el, key) { debugOut(); },
-      axisCancel = function(el, key) { btnUp(KEY.U, KEY.D, KEY.L, KEY.R); debugOut(); },
+      btnDown = function(key) { pico8_buttons[0] |= key; },
+      btnUp   = function(key) { pico8_buttons[0] &= ~key; },
+      btnAxis = function(active_keys) {
+        pico8_buttons[0] &= ~(KEY.U | KEY.D | KEY.L | KEY.R); // clear all axes
+        for(var i=0; i<active_keys.length;i++) { pico8_buttons[0] |= active_keys[i]; }
+      },
+      relTouchPosInEl = function(el, touch) {
+        var rect = el.getBoundingClientRect();
+        if(rect.width === 0 || rect.height === 0) return {x: 0, y: 0};
+        return {
+          x: Math.min(1, Math.max(0, (touch.clientX - rect.left) / rect.width)),
+          y: Math.min(1, Math.max(0, (touch.clientY - rect.top) / rect.height))
+        };
+      },
+      axisUpdate = function(el, touch) {
+        var
+          pos = relTouchPosInEl(el, touch),
+          x_axis = 0, y_axis = 0;
+        if(pos.x < .4) x_axis = KEY.L;
+        if(pos.x > .6) x_axis = KEY.R;
+        btnAxis([x_axis, y_axis]);
+      },
+      axisEnd = function() { btnAxis([]); },
       killEvt = function(evt) { evt.preventDefault(); evt.stopImmediatePropagation(); },
       addXAxis = function(el) {
-        el.addEventListener("touchstart", function(evt){ killEvt(evt); touchStart(el, key); }, false);
-        el.addEventListener("touchend", function(evt){ evt.preventDefault(); evt.stopImmediatePropagation(); touchEnd(el, key); }, false);
-        el.addEventListener("touchcancel", function(evt){ evt.preventDefault(); evt.stopImmediatePropagation(); touchCancel(el, key); }, false);
-        el.addEventListener("touchmove", function(evt){ evt.preventDefault(); evt.stopImmediatePropagation(); touchMove(el, key); }, false);
+        el.addEventListener("touchstart", function(evt){ killEvt(evt); axisUpdate(el, evt.changedTouches && evt.changedTouches.item(0)); }, false);
+        el.addEventListener("touchmove", function(evt){ killEvt(evt); axisUpdate(el, evt.changedTouches && evt.changedTouches.item(0)); }, false);
+        el.addEventListener("touchend", function(evt){ killEvt(evt); axisEnd(); }, false);
+        el.addEventListener("touchcancel", function(evt){ killEvt(evt); axisEnd(); }, false);
       },
       addButton = function(el, key) {
         el.addEventListener("touchstart", function(evt){ killEvt(evt); btnDown(key); }, false);
@@ -289,13 +264,13 @@
         el.addEventListener("touchcancel", function(evt){ killEvt(evt); btnUp(key); }, false);
       };
 
-    addButton(document.getElementById("btn-fire"), KEY.X);
-    addButton(document.getElementById("btn-fire2"), KEY.O);
-    document.getElementById("btns-wrapper").addEventListener("touchstart", function(evt){ evt.preventDefault(); }, false); // prevents "tilt-zooming" when you accidentally touch between the buttons
+    addButton(document.getElementById("btn-fire-x"), KEY.X);
+    addButton(document.getElementById("btn-fire-o"), KEY.O);
+    addXAxis(document.getElementById("btn-leftRight"));
+
+    document.getElementById("btns-wrapper").addEventListener("touchstart", function(evt){ evt.preventDefault(); }, false); // prevent "tilt-zooming" when accidentally touching between the buttons
   }
 </script>
-
-<%- include(atRoot("partial/_tracking_code.html")) %>
 
 </body></html>
 
