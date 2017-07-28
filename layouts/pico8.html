@@ -181,9 +181,9 @@
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
-    height: 120px;
-    line-height: 120px;
-    font-size: 60px;
+    height: 90px;
+    line-height: 90px;
+    font-size: 35px;
     font-weight: bold;
     background: #29ADFF;
     border: 2px solid #1D2B53;
@@ -194,7 +194,7 @@
   }
   @media screen and (max-height: 640px) and (min-width: 500px) {  /* make canvas smaller for small screen-height to make room for touch-buttons */
     canvas#canvas { max-width: 420px; height: auto; }
-    .btn { height: 80px; line-height: 80px; } }
+    .btn { height: 65px; line-height: 65px; } }
   @media screen and (max-height: 520px) {   /* less height on low screens */
     .btn { height: 50px; line-height: 50px; } }
   .btn--wide { width: 35%; max-width: 180px; }
@@ -206,9 +206,9 @@
 </style>
 <div id="btns-wrapper" class="show-if-touch btns clear">
   <div id="btn-state" class="btn-state"></div> <!-- Debug info for set state. Remove :) -->
-  <div id="btn-leftRight" class="btn btn--extra-wide pull-left">⮜ ⮞</div>
-  <div id="btn-fire-o" class="btn pull-right">●</div>
-  <div id="btn-fire-x" class="btn pull-right">×</div>
+  <div id="btn-leftRight" class="btn btn--extra-wide pull-left">← &nbsp; →</div>
+  <!--<div id="btn-fire-o" class="btn pull-right">●</div>-->
+  <div id="btn-fire-x" class="btn btn--wide pull-right">×</div>
   <div class="clear"></div>
 </div>
 
@@ -265,7 +265,7 @@
       };
 
     addButton(document.getElementById("btn-fire-x"), KEY.X);
-    addButton(document.getElementById("btn-fire-o"), KEY.O);
+    //addButton(document.getElementById("btn-fire-o"), KEY.O);
     addXAxis(document.getElementById("btn-leftRight"));
 
     document.getElementById("btns-wrapper").addEventListener("touchstart", function(evt){ evt.preventDefault(); }, false); // prevent "tilt-zooming" when accidentally touching between the buttons
