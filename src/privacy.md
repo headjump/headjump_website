@@ -3,7 +3,14 @@ layout: layout.html
 title: Privacy Policy / Datenschutzbestimmung
 ---
 
-[<i class="fa fa-chevron-left"></i> Back](/)
+<a href="javascript:window.history.back()"><i class="fa fa-chevron-left"></i> Back</a>
+
+<div class="tracking">
+<p>
+  <span class="tracking--whenTracked">You can <a href="javascript:gaOptout()">deactivate tracking.</a></span>
+  <span class="tracking--whenNotTracked">You are <em>not</em> tracked. I'm still glad you are here, though :)</span>
+</p>
+</div>
 
 Wir setzen Google Analytics, einen Webanalysedienst der Google Inc. („Google“) ein. Google verwendet Cookies. Die durch das Cookie erzeugten Informationen über die Benutzung des Onlineangebotes durch die Nutzer werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert.
 
@@ -15,4 +22,4 @@ Die Nutzer können die Speicherung der Cookies durch eine entsprechende Einstell
 
 Weitere Informationen zur Datennutzung zu Werbezwecken durch Google, Einstellungs- und Widerspruchsmöglichkeiten erfahren Sie auf den Webseiten von Google: https://www.google.com/intl/de/policies/privacy/partners/ („Datennutzung durch Google bei Ihrer Nutzung von Websites oder Apps unserer Partner“), http://www.google.com/policies/technologies/ads („Datennutzung zu Werbezwecken“), http://www.google.de/settings/ads („Informationen verwalten, die Google verwendet, um Ihnen Werbung einzublenden“) und http://www.google.com/ads/preferences/ („Bestimmen Sie, welche Werbung Google Ihnen zeigt“).
 
-[<i class="fa fa-chevron-left"></i> Back](/)
+<a href="javascript:window.history.back()"><i class="fa fa-chevron-left"></i> Back</a>

@@ -58,15 +58,20 @@
 
 <body>
 
-<%-// ------------------------- TOUCH DETECTION -------------------------- %>
+<%-// ------------------------- TOUCH + STANDALONE DETECTION -------------------------- %>
 <style>
   .touch-not-supported .show-if-touch { display: none; }
   .touch-supported .show-if-not-touch { display: none; }
+
+  .not-standalone .show-if-standalone { display: none; }
+  .is-standalone .show-if-not-standalone { display: none; }
 </style>
 
 <script type="text/javascript">
+  // detect whether to display touch controls
   if(
     window.location.href.indexOf("?touch") !== -1
+    ||window.location.href.indexOf("&touch") !== -1
     || navigator.userAgent.match(/Android/i)
     || navigator.userAgent.match(/webOS/i)
     || navigator.userAgent.match(/iPhone/i)
@@ -80,8 +85,20 @@
   } else {
     document.body.className += " touch-not-supported";
   }
+
+  // detect if standalone app
+  if(
+    window.location.href.indexOf("?standalone") !== -1
+    || window.location.href.indexOf("&standalone") !== -1
+    || navigator.standalone
+  ) {
+    document.body.className += " is-standalone";
+    window.TOUCH = true;
+  } else {
+    document.body.className += " not-standalone";
+  }
 </script>
-<%-// ------------------------- /TOUCH DETECTION -------------------------- %>
+<%-// ------------------------- /TOUCH + STANDALONE DETECTION -------------------------- %>
 
 
 <div class="canvas-wrapper">
@@ -139,7 +156,26 @@
   </div>
 </div>
 
+
+
+<div class="show-if-not-standalone">
+  Add this app to your homescreen to get better performance! <img src="<%= icon %>" width="30" height="30">
+</div>
+<div class="show-if-standalone">
+  You did it!
+</div>
+
 <style>
+  .show-if-not-standalone,
+  .show-if-standalone {
+    font-family: Arial, sans-serif;
+    font-size: .75em;
+    color: #626B74;
+    text-align: center;
+    max-width: 80%;
+    margin: .5em auto
+  }
+
   .tracking {
     font-family: Arial, sans-serif;
     font-size: .75em;
@@ -155,7 +191,7 @@
 </style>
 <div class="tracking">
   <span class="tracking--whenTracked">
-    This site uses Google Analytics <a href="/privacy">(Privacy Policy)</a>.
+    This site uses Google Analytics <a href="javascript:window.location.href='/privacy'">(Privacy Policy)</a>.
     You can <a href="javascript:gaOptout()">deactivate tracking.</a>
   </span>
   <span class="tracking--whenNotTracked">
@@ -167,6 +203,12 @@
   body { padding: 0; margin: 0; outline: none; background: #222; overflow: hidden; }
   .canvas-wrapper { text-align: center; }
   .canvas-wrapper canvas { margin: 0 auto; }
+  @media screen and (min-height: 700px) {
+    .canvas-wrapper { margin-top: 80px; }
+  }
+  @media screen and (min-height: 880px) {
+    .canvas-wrapper { margin-top: 180px; }
+  }
   .btns {
     position: fixed;
     bottom: 0;
@@ -218,6 +260,13 @@
 </div>
 
 <script type="text/javascript">
+  if(window.navigator.standalone) {
+
+  } else {
+
+  }
+
+
   if(window.TOUCH) {
     var pico8_buttons = [0, 0, 0, 0, 0, 0, 0, 0]; // max 8 players
 
