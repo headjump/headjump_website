@@ -216,6 +216,11 @@
   .pressed_R .btn__rightArrowStyle {
     background-color: #29ADFF; /* change color when pressed */
   }
+  .pressed_L .btn__leftArrowStyle:after,
+  .pressed_X #btn-fire-x:after,
+  .pressed_O #btn-fire-o:after,
+  .pressed_R .btn__rightArrowStyle:after { /* add a top border to the button when pressed, so users really see it */
+    content: ""; width: 100%; height: 6px; position: absolute; margin-top: -5px; left: 0; background-color: #29ADFF; }
   .clear{ clear:both; }
 </style>
 <div id="btns-wrapper" class="show-if-touch btns clear">
@@ -233,7 +238,7 @@
       <svg width="30" height="30" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><circle cx="15" cy="15" r="11.253" style="fill:#222;"/></svg>
     </div>
     -->
-    <div id="btn-fire-x" class="btn btn--wideX pull-right">
+    <div id="btn-fire-x" class="btn btn--wide pull-right">
       <svg width="30" height="30" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path d="M9.05,3.207L15,9.157L20.95,3.207L26.793,9.05L20.843,15L26.793,20.95L20.95,26.793L15,20.843L9.05,26.793L3.207,20.95L9.157,15L3.207,9.05L9.05,3.207Z" style="fill:#222;"/></svg>
     </div>
     <div class="clear"></div>
