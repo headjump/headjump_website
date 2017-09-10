@@ -159,7 +159,10 @@
   </div>
 </div>
 
+<div class="cookie__hint">This site uses cookies. <a href="/privacy">More info.</a></div>
+
 <style>
+  .cookie__hint,
   .addToHomescreen__hint {
     font-size: .75em;
     margin: .5em 2em;
@@ -167,6 +170,7 @@
     color: white;
     font-style: italic;
   }
+  .cookie__hint a {color: white;}
 </style>
 
 <style>
@@ -315,6 +319,8 @@
     document.getElementById("btns-wrapper").addEventListener("touchstart", function(evt){ evt.preventDefault(); }, false); // prevent "tilt-zooming" when accidentally touching between the buttons
   }
 </script>
+
+<%- include(atRoot("partial/_tracking_code.html")) %>
 
 </body></html>
 
