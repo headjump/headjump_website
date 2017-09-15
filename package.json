@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "node index.js",
-    "build-with-drafts": "node index.js --preview-drafts",
+    "build_with_drafts": "node index.js --preview-drafts",
     "serve": "http-server build",
-    "build-and-serve": "yarn build && yarn serve",
+    "build_and_serve": "yarn build && yarn serve",
     "publish_to_gh": "yarn build && node deploy_to_gh-pages.js",
-    "upgrade-deps": "node node_modules/yarn-upgrade-all/index.js"
+    "upgrade_deps": "node node_modules/yarn-upgrade-all/index.js"
   },
   "repository": {
     "type": "git",
