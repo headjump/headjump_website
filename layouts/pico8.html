@@ -42,8 +42,10 @@
 
     /* ------ pico8 control buttons [reset] [pause] [mute] ------ */
     .pico8_btns { text-align: center; }
-    .pico8_el { width:82px; display:inline-block; margin: 1px; padding: 4px; text-align: center; color:#fff; background-color:#777; font-size: 9pt; cursor: pointer; }
-    .pico8_el a{ text-decoration: none; color:#fff; }
+    .pico8_el { width:82px; display:inline-block; margin: 1px; padding: 4px 0; text-align: center; color:#fff; background-color:#777; font-size: 9pt; cursor: pointer; }
+    .touch-supported .pico8_el { width: 74px; }
+    .pico8_el--slim { width:30px!important; }
+    .pico8_el a, a.pico8_el { text-decoration: none; color:#fff; }
     .pico8_el:hover{ background-color:#aaa; }
     .pico8_el:link{ background-color:#aaa; }
 
@@ -126,6 +128,7 @@
 
   <!-- PICO8 CONTROL BUTTONS [reset] [pause] [fullscreen - not visible when using touch-control] [mute] -->
   <div class="pico8_btns">
+
     <span class="pico8_el" onclick="Module.pico8Reset();">
       <img
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAaklEQVR4Ae2dOwoAMQhE15A+rfc/3bZ7AlMnQfywCkKsfcgMM9ZP+QHtIn0vLeBAFduiFdQ/0DmvtR5LXJ6CPSXe2ZXcFNlTxFbemKrbZPs35XogeS9xeQr+anT6LzoOwEDwZJ7jwhXUnwkTTiDQ2Ja34AAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII="
@@ -150,8 +153,20 @@
         alt="Toggle Sound" width=12 height=12/>
       Sound
     </span>
+
+    <!-- Share links -->
+    <span style="white-space: nowrap">
+      <a target="_blank" style="background-color:#3b5998" class="pico8_el pico8_el--slim" id="js__shareFb" title="Share on Facebook" href="#">FB</a>
+      <a target="_blank" style="background-color:#00aced" class="pico8_el pico8_el--slim" id="js__shareTw" title="Share on Twitter" href="#">TW</a>
+    </span>
+    <script type="text/javascript">
+      document.getElementById("js__shareFb").setAttribute("href","<%=facebookShareURL%>"+encodeURI(window.location.href));
+      document.getElementById("js__shareTw").setAttribute("href","<%=twitterShareURL%>"+encodeURI(window.location.href));
+    </script>
+
   </div>
 </div>
+
 
 <!-- ASK USER TO SET THE SITE AS A STANDALONE-WEBAPP -->
 
@@ -163,6 +178,8 @@
   </div>
 </div>
 
+
+<!-- COOKIE hint -->
 <div class="cookie__hint">This site uses cookies. <a onclick="window.location.href='/privacy'" href="#">More info.</a></div>
 
 <style>

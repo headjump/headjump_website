@@ -22,6 +22,8 @@ Metalsmith(__dirname)
   .metadata({
     atRoot: function (target) { return path.join(__dirname, target); },
     urlOnGithubPages: function(path){ return "https://"+("headjump.github.io/headjump_website/"+path).split("//").join("/"); },
+    facebookShareURL:"https://www.facebook.com/sharer/sharer.php?u=",
+    twitterShareURL:"https://twitter.com/intent/tweet?text=",
     gaId: "UA-3535743-4",
     title: "",
     page_description: "Indiegames and Game development by Dennis Treder. HTML games, Javascript, Gamedesign, Illustration and Pixelart."
