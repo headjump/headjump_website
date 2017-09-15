@@ -8,8 +8,12 @@ $font-family-headline: 'source_sans_prolight', "source_sans_proregular", "Helvet
     clear: both
     visibility: hidden
 
-=small
+=small-to-medium
   @media screen and (max-width: 799px)
+    @content
+
+=small
+  @media screen and (max-width: 400px)
     @content
 
 =large

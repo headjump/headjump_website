@@ -2,7 +2,7 @@
   text-align: center
   background-color: #1D1E21
   padding: 1em 0
-  +small
+  +small-to-medium
     padding: .5em 0
   h1
     position: absolute
@@ -12,18 +12,29 @@
   img
     width: 147px
     height: auto
+    +small
+      width: 73px
 
 .header__title
   margin-top: 1em
+  +small
+    margin-top: .25em
   img
     width: 160px
     height: auto
+    +small
+      width: 120px
 
 .header__subtitle
   color: #68A6E7
+  max-width: 320px
+  margin: 0 auto
   h2
     font-family: $font-family-text
     margin: 0
     margin-top: .25em
     font-size: .85em
     font-weight: normal
+    +small-to-medium
+      margin-left: 1em
+      margin-right: 1em

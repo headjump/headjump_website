@@ -18,7 +18,7 @@ body
   white-space: nowrap
 
 .large-only
-  +small
+  +small-to-medium
     display: none
 
 .sr-only
@@ -37,6 +37,10 @@ a
 
 h1, h2, h3
   font-family: $font-family-headline
+
+h1
+  +small
+    font-size: 1.5em
 
 @import "header"
 @import "footer"
