@@ -1,0 +1,22 @@
+.thing__container
+  margin: 2em 0
+.thing
+  position: relative
+  background-color: #1D1E21
+.thing__content
+  padding: 1em
+.thing__teaser
+  img
+    max-width: 100%
+    height: auto
+
++large
+  .thing__container--twoThings
+    margin-left: -1em
+    margin-right: -1em
+    display: flex
+    flex-flow: row nowrap
+    justify-content: center
+    .thing
+      flex: 1
+      margin: 0 1em
