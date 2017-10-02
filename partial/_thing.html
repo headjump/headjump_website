@@ -1,0 +1,21 @@
+<div class="thing">
+
+  <div class="thing__teaser">
+    <a href="<%= thing.link %>"><img src="<%= thing.teaser %>"></a>
+  </div>
+  <div class="thing__content">
+    <div class="thing__title">
+      <h3><%= thing.title %></h3>
+    </div>
+    <div class="thing__gallery">
+      <% thing.gallery.forEach(function(item){ %>
+
+        <div class="thing__gallery__item">
+          <a href="<%= item.link %>" data-fancybox="<%= thing.uid %>" title="<%= item.desc %>"><img src="<%= item.thumb %>"></a>
+        </div>
+
+      <% }); %>
+    </div>
+  </div>
+
+</div>

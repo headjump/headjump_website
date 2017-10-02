@@ -21,18 +21,17 @@
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152-precomposed.png">
   <!-- For iPhone 6 Plus with @3× display: -->
   <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/apple-touch-icon-180x180-precomposed.png">
-  <!-- For Chrome for Android: -->
-  <link rel="icon" sizes="192x192" href="/touch-icon-192x192.png">
 
   <title>Headjump<%= title !== "" ? (" - " + title) : ""%></title>
   <meta name="description" content="<%= page_description %>">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <%- include(atRoot("partial/_include_font.html"), {paths: ["/css/fonts/sourcesanspro-regular.woff.css","/css/fonts/sourcesanspro-light.woff.css"]}) %>
 
-  <!-- Fancybox -->
+  <!-- Fancybox http://fancyapps.com/fancybox/3/ -->
   <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
+  <script>$.fancybox.defaults.buttons = ['close']</script>
 
 </head>
 <body>

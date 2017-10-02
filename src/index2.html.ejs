@@ -2,6 +2,22 @@
 layout: layout.html
 ---
 
+<%
+  const pirategolf = {
+    uid: "pirategolf",
+    title: "Pirate Golf Adventure",
+    link: "https://headjump.itch.io/pirate-golf-adventure",
+    teaser: "/img/placeholder--large.jpg",
+    gallery: [
+      {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
+      {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
+      {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"}
+    ]
+  };
+ %>
+
+<%- include(atRoot("partial/_thing.html"), {thing: pirategolf}) %>
+
 <ul>
   <li>
     <a href="https://headjump.itch.io/pirate-golf-adventure"><strong>Pirate Golf Adventure</strong> <em>(Flashgame, download it for Mac and Windows!)</em></a>
