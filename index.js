@@ -25,6 +25,15 @@ Metalsmith(__dirname)
     facebookShareURL:"https://www.facebook.com/sharer/sharer.php?u=",
     twitterShareURL:"https://twitter.com/intent/tweet?text=",
     gaId: "UA-3535743-4",
+    getInitBtnId:function(btns){
+      switch(btns.init){
+        case "dpad": return 1;
+        case "leftright": return 2;
+        case "updown": return 3;
+        case "analog": return 4;
+      }
+      return 1; // dpad
+    },
     title: "",
     page_description: "Indiegames and Game development by Dennis Treder. HTML games, Javascript, Gamedesign, Illustration and Pixelart."
   })
