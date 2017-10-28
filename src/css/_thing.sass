@@ -1,27 +1,30 @@
-.thing__container
+.thing
   margin: 4em 0
   +small
     margin: 2em 0
-.thing
-  position: relative
-  background-color: #1D1E21
-  +small
     margin-left: -1em
     margin-right: -1em
-.thing__content
-  padding: 1em
+  position: relative
+  background-color: #1D1E21
+.thing__header
+  +clear-after
+  h2
+    color: white
+
 .thing__teaser
   img
     max-width: 100%
     height: auto
 
-+large
-  .thing__container--twoThings
-    margin-left: -1em
-    margin-right: -1em
-    display: flex
-    flex-flow: row nowrap
-    justify-content: center
-    .thing
-      flex: 1
-      margin: 0 1em
+// SMALL modifications
+.thing--small
+  h2
+    font-size: 1.5em
+  .thing__teaser
+    float: left
+    width: 35%
+  .thing__description
+    box-sizing: border-box
+    float: right
+    width: 64%
+    padding-left: 1.25em

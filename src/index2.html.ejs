@@ -3,55 +3,53 @@ layout: layout.html
 ---
 
 
-<div class="thing__container">
+<%- include(atRoot("partial/_thing.html"), {thing: {
+  uid: "pirategolf",
+  title: "Pirate Golf Adventure",
+  link: "https://headjump.itch.io/pirate-golf-adventure",
+  teaser: "/img/placeholder--large.jpg",
+  body: `
+    <p>Hello World :)</p>
+    <p>What?</p>
+  `,
+  button: `
+    <p>DO IT!</p>
+  `,
+  gallery: [
+    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
+    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
+    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"}
+  ]
+}}) %>
 
-  <%
-    const pirategolf = {
-      uid: "pirategolf",
-      title: "Pirate Golf Adventure",
-      link: "https://headjump.itch.io/pirate-golf-adventure",
-      teaser: "/img/placeholder--large.jpg",
-      gallery: [
-        {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
-        {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
-        {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"}
-      ]
-    };
-   %>
-  <%- include(atRoot("partial/_thing.html"), {thing: pirategolf}) %>
 
-</div>
+<%- include(atRoot("partial/_thing.html"), {thing: {
+  small: true,
+  uid: "rockkid",
+  title: "RockKid!",
+  link: "/g/rockkid",
+  teaser: "/img/placeholder--large.jpg",
+  body: "",
+  button: "",
+  gallery: [
+    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
+    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
+    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"}
+  ]
+}}) %>
 
-<div class="thing__container thing__container--twoThings">
 
-  <%
-  const rockkid = {
-    uid: "rockkid",
-    title: "RockKid!",
-    link: "/g/rockkid",
-    teaser: "/img/placeholder--large.jpg",
-    gallery: [
-      {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
-      {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
-      {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"}
-    ]
-  };
-  %>
-  <%- include(atRoot("partial/_thing.html"), {thing: rockkid}) %>
-
-  <%
-  const crane = {
-    uid: "crane",
-    title: "The Last Crane",
-    link: "/g/crane",
-    teaser: "/img/placeholder--large.jpg",
-    gallery: [
-      {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
-      {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
-      {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"}
-    ]
-  };
-  %>
-  <%- include(atRoot("partial/_thing.html"), {thing: crane}) %>
-
-</div>
+<%- include(atRoot("partial/_thing.html"), {thing: {
+  small: true,
+  uid: "crane",
+  title: "The Last Crane",
+  body: "",
+  button: "",
+  link: "/g/crane",
+  teaser: "/img/placeholder--large.jpg",
+  gallery: [
+    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
+    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
+    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"}
+  ]
+}}) %>
