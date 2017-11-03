@@ -26,6 +26,24 @@
 
 </head>
 <body>
+
+<script type="text/javascript">
+  // ----------------- touch device? ----------------- %>
+  if(  navigator.userAgent.match(/Android/i)
+    || navigator.userAgent.match(/webOS/i)
+    || navigator.userAgent.match(/iPhone/i)
+    || navigator.userAgent.match(/iPad/i)
+    || navigator.userAgent.match(/iPod/i)
+    || navigator.userAgent.match(/BlackBerry/i)
+    || navigator.userAgent.match(/Windows Phone/i)
+  ) {
+    document.body.className += " touch-device";
+    window.TOUCH = true;
+  } else {
+    document.body.className += " no-touch-device";
+  }
+</script>
+
 <header class="header">
   <div class="header__logo"><img src="/img/logo.png" aria-hidden="true"></div>
   <div class="header__title"><img src="/img/title.png" aria-hidden="true"></div>

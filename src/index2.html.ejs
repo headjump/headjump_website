@@ -2,24 +2,31 @@
 layout: layout.html
 ---
 
+<%
+  const dummy_gallery = [
+    {thumb: "/img/placeholder--thumb.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
+    {thumb: "/img/placeholder--thumb.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
+    {thumb: "/img/placeholder--thumb.jpg", desc: "Title", link:"/img/placeholder--large.jpg"}
+  ];
+%>
 
 <%- include(atRoot("partial/_thing.html"), {thing: {
   uid: "pirategolf",
   title: "Pirate Golf Adventure",
   link: "https://headjump.itch.io/pirate-golf-adventure",
-  teaser: "/img/placeholder--large.jpg",
+  teaser: "/img/pirategolf__teaser.jpg",
   body: `
-    <p>Hello World :)</p>
-    <p>What?</p>
+    <p>
+      A game for your browser. 2D Sidescrolling Casual Minigolf with a pirate theme and a cheesy story.
+    </p>
+    <p class="light">
+      Play it with <em>Flash</em> or download for Windows or Mac!
+    </p>
   `,
   button: `
     <p>DO IT!</p>
   `,
-  gallery: [
-    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
-    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
-    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"}
-  ]
+  gallery: dummy_gallery
 }}) %>
 
 
@@ -28,14 +35,10 @@ layout: layout.html
   uid: "rockkid",
   title: "RockKid!",
   link: "/g/rockkid",
-  teaser: "/img/placeholder--large.jpg",
+  teaser: "/img/rockkid__teaser.jpg",
   body: "",
   button: "",
-  gallery: [
-    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
-    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
-    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"}
-  ]
+  gallery: dummy_gallery
 }}) %>
 
 
@@ -46,10 +49,6 @@ layout: layout.html
   body: "",
   button: "",
   link: "/g/crane",
-  teaser: "/img/placeholder--large.jpg",
-  gallery: [
-    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
-    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"},
-    {thumb: "/img/placeholder--small.jpg", desc: "Title", link:"/img/placeholder--large.jpg"}
-  ]
+  teaser: "/img/crane__teaser.jpg",
+  gallery: dummy_gallery
 }}) %>

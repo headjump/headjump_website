@@ -1,30 +1,71 @@
+$thing__bg: #1D1E21
+$thing__gallery: #0F0F10
+
 .thing
-  margin: 4em 0
+  max-width: 460px
+  position: relative
+  box-sizing: border-box
+  background-color: $thing__bg
+  padding: 1em
+  margin: 4em auto
   +small
     margin: 2em 0
     margin-left: -1em
     margin-right: -1em
+
+// -------------- TEASER --------------
+.thing__teaser
+  text-align: center
+  padding: 1em 0
   position: relative
-  background-color: #1D1E21
-.thing__header
-  +clear-after
+  box-sizing: border-box
+  img
+    width: 100%
+    max-width: 300px
+    height: auto
+    border-radius: 18px
+    box-shadow: 0 5px 28px rgba(0,0,0,.4)
+    transition-property: transform filter
+    transition-duration: .3s
+    +small
+      max-width: 200px
+.no-touch-device .thing__teaser 
+  a:hover img
+    transform: scale3d(1.05,1.05,1) translate3d(0,-3px,0)
+    filter: brightness(110%)
+  a:active img
+    transition-duration: .18s
+    transform: scale3d(.95,.96,1) translate3d(0,5px,0)
+.thing--small .thing__teaser
+  padding: .5em 0
+  img
+    border-radius: 8px
+    max-width: 120px
+    box-shadow: 0 3px 14px rgba(0,0,0,.4)
+
+
+// -------------- DESCRIPTION --------------
+.thing__description
+  text-align: center
   h2
     color: white
-
-.thing__teaser
-  img
-    max-width: 100%
-    height: auto
-
-// SMALL modifications
-.thing--small
+.thing--small .thing__description
   h2
     font-size: 1.5em
-  .thing__teaser
-    float: left
-    width: 35%
-  .thing__description
-    box-sizing: border-box
-    float: right
-    width: 64%
-    padding-left: 1.25em
+
+
+// -------------- GALLERY --------------
+.thing__gallery
+  padding: 1em
+  display: flex
+  justify-content: space-around
+  background-color: $thing__gallery
+.thing__gallery__item
+  position: relative
+  width: 60px
+  a
+    display: block
+    line-height: 0
+  img
+    width: 100%
+    height: auto
