@@ -5,25 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
 
-  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
-  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><!-- 57×57px -->
-  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
-  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
-  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/apple-touch-icon-76x76-precomposed.png">
-  <!-- For iPhone with @2× display running iOS ≤ 6: -->
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
-  <!-- For iPhone with @2× display running iOS ≥ 7: -->
-  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120-precomposed.png">
-  <!-- For iPad with @2× display running iOS ≤ 6: -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png">
-  <!-- For iPad with @2× display running iOS ≥ 7: -->
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152-precomposed.png">
-  <!-- For iPhone 6 Plus with @3× display: -->
-  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/apple-touch-icon-180x180-precomposed.png">
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="headjump - games and pixel" />
+  <meta property="og:image"       content="http://headjump.de/headjump.png" />
+  <meta property="og:description" content="Indiegames and Pixels by Dennis Treder. HTML5, Javascript, Gamedesign, Illustrations." />
 
-  <title>headjump</title>
-  <meta name="description" content="Indiegames and Game development by Dennis Treder. HTML games, Javascript, Gamedesign, Illustration and Pixelart.">
+  <link rel="apple-touch-icon" href="/headjump.png">
+  <link rel="icon" href="/headjump.png">
+
+  <title>headjump - Games and Pixel</title>
+  <meta name="description" content="Indiegames and Pixels by Dennis Treder. HTML5, Javascript, Gamedesign, Illustrations.">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <!--[if gte IE 9]><!-->
 <script>
@@ -87,6 +78,24 @@
 
 </head>
 <body>
+
+<script type="text/javascript">
+  // ----------------- touch device? ----------------- 
+  if(  navigator.userAgent.match(/Android/i)
+    || navigator.userAgent.match(/webOS/i)
+    || navigator.userAgent.match(/iPhone/i)
+    || navigator.userAgent.match(/iPad/i)
+    || navigator.userAgent.match(/iPod/i)
+    || navigator.userAgent.match(/BlackBerry/i)
+    || navigator.userAgent.match(/Windows Phone/i)
+  ) {
+    document.body.className += " touch-device";
+    window.TOUCH = true;
+  } else {
+    document.body.className += " no-touch-device";
+  }
+</script>
+
 <header class="header">
   <div class="header__logo"><img src="/img/logo.png" aria-hidden="true"></div>
   <div class="header__title"><img src="/img/title.png" aria-hidden="true"></div>
