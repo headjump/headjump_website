@@ -24,9 +24,12 @@ layout: layout.html
     </p>
   `,
   button: `
-    <a class="button" href="{link}">DO IT!</a>
+    <a class="button" href="{link}">
+      <span class="show-touch">Play on Windows & Mac!</span>
+      <span class="show-desktop">Play in your browser!</span>
+    </a>
   `,
-  gallery: dummy_gallery
+  gallery: []
 }}) %>
 
 
@@ -37,8 +40,12 @@ layout: layout.html
   link: "/g/rockkid",
   teaser: "/img/rockkid__teaser.jpg",
   body: "",
-  button: "",
-  gallery: dummy_gallery
+  button: `
+    <a class="button" href="{link}">
+      Play in your browser!
+    </a>
+  `,
+  gallery: []
 }}) %>
 
 
@@ -47,8 +54,12 @@ layout: layout.html
   uid: "crane",
   title: "The Last Crane",
   body: "",
-  button: "",
+  button: `
+    <a class="button" href="{link}">
+      Play in your browser!
+    </a>
+  `,
   link: "/g/crane",
   teaser: "/img/crane__teaser.jpg",
-  gallery: dummy_gallery
+  gallery: []
 }}) %>

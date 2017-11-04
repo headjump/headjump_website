@@ -17,6 +17,7 @@
     <%- thing.button.replace(/{link}/gi,thing.link) -%>
   </div>
 
+  <% if (thing.gallery.length>0) { %>
   <div class="thing__gallery">
     <% thing.gallery.forEach(function(item){ %>
 
@@ -24,5 +25,6 @@
 
     <% }); %>
   </div>
+  <% } %>
 
 </div>
