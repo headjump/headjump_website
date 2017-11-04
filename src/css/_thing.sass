@@ -6,19 +6,27 @@ $thing__gallery: #0F0F10
   position: relative
   box-sizing: border-box
   background-color: $thing__bg
-  padding: 1em
+  padding: 2em 1em
   margin: 4em auto
   +small
+    padding: 1.5em 1em
     margin: 2em 0
     margin-left: -1em
     margin-right: -1em
+.thing--small
+  padding: 1em
+  +small
+    padding: 1em
+.thing > div
+  max-width: 340px
+  box-sizing: border-box
+  margin: 0 auto
 
 // -------------- TEASER --------------
 .thing__teaser
   text-align: center
-  padding: 1em 0
+  padding-bottom: 1em
   position: relative
-  box-sizing: border-box
   img
     width: 100%
     max-width: 300px
@@ -37,7 +45,7 @@ $thing__gallery: #0F0F10
     transition-duration: .18s
     transform: scale3d(.95,.96,1) translate3d(0,5px,0)
 .thing--small .thing__teaser
-  padding: .5em 0
+  padding-bottom: .5em
   img
     border-radius: 8px
     max-width: 120px
@@ -49,9 +57,14 @@ $thing__gallery: #0F0F10
   text-align: center
   h2
     color: white
+    margin: .25em 0 .5em 0
+  +medium-and-up
+    p
+      margin-left: .75em
+      margin-right: .75em
 .thing--small .thing__description
   h2
-    font-size: 1.5em
+    font-size: 1.25em
 
 
 // -------------- GALLERY --------------
