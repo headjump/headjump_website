@@ -33,8 +33,9 @@ $thing__gallery: #0F0F10
     height: auto
     border-radius: 18px
     box-shadow: 0 5px 28px rgba(0,0,0,.4)
-    transition-property: transform filter
+    transition-property: transform, filter
     transition-duration: .3s
+    transform: translate3d(0,0,0)
     +small
       max-width: 200px
 .no-touch-device .thing__teaser 
@@ -65,6 +66,35 @@ $thing__gallery: #0F0F10
 .thing--small .thing__description
   h2
     font-size: 1.25em
+
+
+// -------------- BUTTON --------------
+a.button
+  margin: 1em 0
+  box-shadow: 0 2px 8px rgba(0,0,0,.4)
+  display: block
+  box-sizing: border-box
+  text-align: center
+  padding: 10px 1em
+  justify-content: space-around
+  flex-direction: column
+  background: #0CC888 linear-gradient(180deg, #0DD582, #0BBA8E)
+  border-bottom: 4px solid #009070
+  color: white
+  font-weight: bold
+  font-size: 1.5em
+  text-shadow: 0 2px 2px rgba(0,0,0,.3)
+  transition-property: transform, filter
+  transition-duration: .3s
+  transform: translate3d(0,0,0)
+  &:hover
+    text-decoration: none
+    transform: translate3d(0,-2px,0)
+    filter: brightness(120%)
+  &:active
+    text-decoration: none
+    transition-duration: .18s
+    transform: scale3d(.98,.98,1) translate3d(0,2px,0)
 
 
 // -------------- GALLERY --------------
