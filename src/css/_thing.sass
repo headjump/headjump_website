@@ -1,4 +1,4 @@
-$thing__bg: #1D1E21
+$thing__bg: #25262C
 $thing__gallery: #0F0F10
 
 .thing
@@ -6,17 +6,17 @@ $thing__gallery: #0F0F10
   position: relative
   box-sizing: border-box
   background-color: $thing__bg
-  padding: 2em 1em
-  margin: 4em auto
+  padding: 1.5em 1em
+  margin: 2em auto
   +small
-    padding: 1.5em 1em
-    margin: 2em 0
+    padding: 1.25em 1em
+    margin: 1.25em 0
     margin-left: -1em
     margin-right: -1em
 .thing--small
-  padding: 1em
-  +small
-    padding: 1em
+  //padding: 1em
+  //+small
+  //  padding: 1em
 .thing > div
   max-width: 340px
   box-sizing: border-box
@@ -70,7 +70,6 @@ $thing__gallery: #0F0F10
 
 // -------------- BUTTON --------------
 a.button
-  margin: 1em 0
   box-shadow: 0 2px 8px rgba(0,0,0,.4)
   display: block
   box-sizing: border-box
@@ -88,6 +87,9 @@ a.button
   transition-property: transform, filter
   transition-duration: .3s
   transform: translate3d(0,0,0)
+  i.fa
+    font-size: 1.5em
+    vertical-align: text-bottom
   &:hover
     text-decoration: none
     transform: translate3d(0,-2px,0)
@@ -96,6 +98,12 @@ a.button
     text-decoration: none
     transition-duration: .18s
     transform: scale3d(.98,.98,1) translate3d(0,2px,0)
+  small
+    display: block
+    font-weight: normal
+    margin-bottom: -4px
+    font-size: .7em
+    color: rgba(255,255,255,.9)
 
 
 // -------------- GALLERY --------------

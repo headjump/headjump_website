@@ -26,7 +26,7 @@ layout: layout.html
   button: `
     <a class="button" href="{link}">
       <span class="show-touch">Play on Windows & Mac!</span>
-      <span class="show-desktop">Play in your browser!</span>
+      <span class="show-desktop">${icon('gamepad')} Play in your browser!<small>Or download for Windows & Mac</small></span>
     </a>
   `,
   gallery: []
@@ -42,7 +42,7 @@ layout: layout.html
   body: "",
   button: `
     <a class="button" href="{link}">
-      Play in your browser!
+      ${touchOrDesktop(icon('mobile'),icon('gamepad'))} Play in your browser!
     </a>
   `,
   gallery: []
@@ -56,7 +56,7 @@ layout: layout.html
   body: "",
   button: `
     <a class="button" href="{link}">
-      Play in your browser!
+      ${touchOrDesktop(icon('mobile'),icon('gamepad'))}  Play in your browser!
     </a>
   `,
   link: "/g/crane",

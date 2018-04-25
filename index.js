@@ -26,6 +26,11 @@ Metalsmith(__dirname)
     facebookShareURL:"https://www.facebook.com/sharer/sharer.php?u=",
     twitterShareURL:"https://twitter.com/intent/tweet?text=",
     gaId: "UA-3535743-4",
+    touchOrDesktop: function (onTouch, onDesktop, tag) {
+      tag || (tag = 'span')
+      return `<${tag} class="show-touch">${onTouch}</${tag}><${tag} class="show-desktop">${onDesktop}</${tag}>`
+    },
+    icon: function(iconName){ return `<i class="fa fa-${iconName}"></i>`},
     getInitBtnId:function(btns){
       switch(btns.init){
         case "dpad": return 1;
