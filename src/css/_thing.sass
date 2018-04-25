@@ -87,9 +87,9 @@ a.button
   transition-property: transform, filter
   transition-duration: .3s
   transform: translate3d(0,0,0)
+  margin-top: .75em
   i.fa
-    font-size: 1.5em
-    vertical-align: text-bottom
+    font-size: 1.25em
   &:hover
     text-decoration: none
     transform: translate3d(0,-2px,0)
@@ -104,7 +104,9 @@ a.button
     margin-bottom: -4px
     font-size: .7em
     color: rgba(255,255,255,.9)
-
+  &.button--secondary
+    background: #399E9B linear-gradient(180deg, #44B3AF, #20706B)
+    border-bottom-color: #17635F
 
 // -------------- GALLERY --------------
 .thing__gallery

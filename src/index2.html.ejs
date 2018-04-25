@@ -25,8 +25,11 @@ layout: layout.html
   `,
   button: `
     <a class="button" href="{link}">
-      <span class="show-touch">Play on Windows & Mac!</span>
+      <span class="show-touch">${icon('desktop')} Play on Windows & Mac!</span>
       <span class="show-desktop">${icon('gamepad')} Play in your browser!<small>Or download for Windows & Mac</small></span>
+    </a>
+    <a data-fancybox="gallery" class="button button--secondary" href="https://vimeo.com/227221015">
+      ${icon('play-circle')} Video Demo
     </a>
   `,
   gallery: []
@@ -39,24 +42,43 @@ layout: layout.html
   title: "RockKid!",
   link: "/g/rockkid",
   teaser: "/img/rockkid__teaser.jpg",
-  body: "",
+  body: `
+    Early game <strong>prototype!</strong>
+  `,
   button: `
     <a class="button" href="{link}">
-      ${touchOrDesktop(icon('mobile'),icon('gamepad'))} Play in your browser!
+      ${touchOrDesktop(icon('mobile'),icon('gamepad'))} Play game prototype!
     </a>
   `,
   gallery: []
 }}) %>
 
-
 <%- include(atRoot("partial/_thing.html"), {thing: {
+  small: true,
+  uid: "pico8_html_template",
+  title: "PICO8 HTML Template",
+  body: `
+    HTML surround to embed PICO8 games in, with support for manifest files
+    and configurable touch controls <span style='font-size: 1.25em'>${icon('mobile')}</span>${icon('hand-o-left')}.
+  `,
+  button: `
+    <a class="button" href="{link}">
+      ${icon('github')} View on GitHub!
+    </a>
+  `,
+  link: "https://github.com/headjump/pico8_html_template",
+  teaser: "/img/pico8_html_template__teaser.jpg",
+  gallery: []
+}}) %>
+
+<%# include(atRoot("partial/_thing.html"), {thing: {
   small: true,
   uid: "crane",
   title: "The Last Crane",
   body: "",
   button: `
     <a class="button" href="{link}">
-      ${touchOrDesktop(icon('mobile'),icon('gamepad'))}  Play in your browser!
+      ${touchOrDesktop(icon('mobile'),icon('gamepad'))} Play in your browser!
     </a>
   `,
   link: "/g/crane",
