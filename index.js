@@ -25,6 +25,7 @@ Metalsmith(__dirname)
     websiteUrl: "http://headjump.de",
     facebookShareURL:"https://www.facebook.com/sharer/sharer.php?u=",
     twitterShareURL:"https://twitter.com/intent/tweet?text=",
+    useGA: false, // use google analytics?
     gaId: "UA-3535743-4",
     touchOrDesktop: function (onTouch, onDesktop, tag) {
       tag || (tag = 'span')
